@@ -52,7 +52,7 @@ class InsertNoteActivity : AppCompatActivity() {
         }
 
 
-        binding.updateBtn.setOnClickListener {
+        binding.insertBtn.setOnClickListener {
             val title=binding.notesTitle.text.toString()
             val subTitle=binding.notesSubtitle.text.toString()
             val notes=binding.notesText.text.toString()

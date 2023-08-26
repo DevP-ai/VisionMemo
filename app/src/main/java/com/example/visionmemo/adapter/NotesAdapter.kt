@@ -1,12 +1,14 @@
 package com.example.visionmemo.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.visionmemo.R
+import com.example.visionmemo.activities.UpdateNotesActivity
 import com.example.visionmemo.model.NoteEntity
 
 
@@ -40,6 +42,17 @@ class NotesAdapter(private var context: Context, private var list: List<NoteEnti
             holder.priority.setBackgroundResource(R.drawable.blue_shape)
         }else{
             holder.priority.setBackgroundResource(R.drawable.yellow_shape)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent= Intent(context,UpdateNotesActivity::class.java)
+            intent.putExtra("ID",notes.id)
+            intent.putExtra("TITLE",notes.notesTitle)
+            intent.putExtra("SUBTITLE",notes.notesSubTitle)
+            intent.putExtra("NOTES",notes.notes)
+            intent.putExtra("PRIORITY",notes.notesPriority)
+
+            context.startActivity(intent)
         }
 
     }
