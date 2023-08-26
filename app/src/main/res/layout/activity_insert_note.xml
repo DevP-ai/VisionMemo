@@ -62,7 +62,7 @@
               android:textAllCaps="false"/>
 
           <ImageView
-              android:id="@+id/firstPriority"
+              android:id="@+id/redPriority"
               android:layout_width="40dp"
               android:layout_height="40dp"
               android:layout_gravity="center"
@@ -71,7 +71,7 @@
               android:layout_marginStart="10dp"/>
 
           <ImageView
-              android:id="@+id/secondPriority"
+              android:id="@+id/bluePriority"
               android:layout_width="40dp"
               android:layout_height="40dp"
               android:layout_gravity="center"
@@ -79,7 +79,7 @@
               android:layout_marginStart="20dp"/>
 
           <ImageView
-              android:id="@+id/thirdPriority"
+              android:id="@+id/yellowPriority"
               android:layout_width="40dp"
               android:layout_height="40dp"
               android:layout_gravity="center"
