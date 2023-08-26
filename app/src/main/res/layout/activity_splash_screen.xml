@@ -4,18 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6B4E9E"
+    android:background="#624A8E"
     tools:context=".activities.SplashScreen">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Vision Memo"
-        android:textAllCaps="false"
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="292dp"
         android:fontFamily="@font/google_sans_bold"
-        android:textAlignment="center"
         android:gravity="center"
+        android:text="Vision Memo"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="30sp"/>
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName"
+        android:theme="@style/Theme.Material3.Dark"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
