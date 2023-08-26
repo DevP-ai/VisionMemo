@@ -2,6 +2,12 @@ package com.example.visionmemo.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -12,6 +18,7 @@ import com.example.visionmemo.model.NoteEntity
 import com.example.visionmemo.repository.NotesRepository
 import com.example.visionmemo.viewmodel.NotesViewModel
 import com.example.visionmemo.viewmodelFactory.NotesViewModelFactory
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 import java.util.Date
 
@@ -19,7 +26,7 @@ class UpdateNotesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUpdateNotesBinding
     private var priority:String=""
     private lateinit var notesViewModel: NotesViewModel
-    var sId:Int?=null
+    private var sId:Int?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,6 +116,41 @@ class UpdateNotesActivity : AppCompatActivity() {
         Toast.makeText(this,"Notes Update", Toast.LENGTH_LONG).show()
 
         finish()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.delete_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.deleteBtn){
+           var bottomSheetDialog=BottomSheetDialog(this)
+
+            var view:View=LayoutInflater.from(this)
+                .inflate(R.layout.delete_bottom_sheet, findViewById<LinearLayout>(R.id.bottomSheet))
+
+            bottomSheetDialog.setContentView(view)
+
+            val yes=view.findViewById<TextView>(R.id.txtYes)
+            val no=view.findViewById<TextView>(R.id.txtNo)
+
+            yes.setOnClickListener {
+                lifecycleScope.launch {
+                    notesViewModel.deleteNotes(sId!!)
+                }
+                Toast.makeText(this,"Notes Deleted",Toast.LENGTH_LONG).show()
+
+                finish()
+            }
+
+            no.setOnClickListener {
+                bottomSheetDialog.dismiss()
+            }
+
+            bottomSheetDialog.show()
+        }
+        return true
     }
 
 
